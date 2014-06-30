@@ -31,7 +31,7 @@ setup(
     author="Steve Henderson",
     author_email="steve.henderson@hendotech.com.au",
     url="https://github.com/shendo/taskq",
-    description="Priority queue with partitioning support",
+    description="Priority queue with task categorisation support",
     long_description=open('README.rst').read(),
     license="GPL",
     tests_requires = ['pytest>=2.5'],
