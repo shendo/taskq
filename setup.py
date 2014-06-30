@@ -34,7 +34,7 @@ setup(
     description="Priority queue with task categorisation support",
     long_description=open('README.rst').read(),
     license="GPL",
-    tests_requires = ['pytest>=2.5'],
+    tests_require = ['pytest>=2.5'],
     classifiers = [
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
