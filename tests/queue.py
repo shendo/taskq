@@ -169,6 +169,16 @@ def test_discard():
     assert len(q) == 2
     assert q.pop(2) == ['test1', 'test3']
     
+    q = Queue()
+    q.push('test1', 1, 'foo')
+    q.push('test2', 1, 'bar')
+    q.push('test3', 1, 'foo')
+    q.discard('test2')
+    q.discard('test1')
+    q.compact()
+    assert len(q) == 1
+    assert q.pop() == 'test3'
+    
 def test_policies():
     q = Queue(maxsize=1, full_policy=policy.discard)
     q.push('test1')

@@ -96,9 +96,10 @@ class Queue(object):
         elements are encountered during pop() operations.
         """
         # drop all discarded and re-heapify
-        for cat, q in self.heaps:
-            self.heaps[cat] = heapq.heapify([ x for x in q 
-                                             if q[-1] is not DISCARDED ])
+        for cat, q in self.heaps.iteritems():
+            newq = [ x for x in q if x[-1] is not DISCARDED ]
+            heapq.heapify(newq)
+            self.heaps[cat] = newq
     
     def purge(self):
         """
@@ -116,6 +117,7 @@ class Queue(object):
         @param count: Multipop count, None to pop single item only.
             count > 0 to instead pop multiple items and return as a list.
         @param categories: List of item/task categories to pop from queue.
+            None = any category.
         @param ratios: List of corresponding weighting ratios for the provided
             categories.  This modifies the returned number of items for the
             requested multipop count.
