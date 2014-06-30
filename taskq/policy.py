@@ -19,7 +19,7 @@ import random
 class QueueFullException(Exception):
     pass
 
-def exception_policy(queue):
+def exception(queue):
     """
     Policy for raising an exception when the
     queue is full.
@@ -28,7 +28,7 @@ def exception_policy(queue):
     """
     raise QueueFullException
 
-def discard_policy(queue):
+def discard(queue):
     """
     Policy for discarding the current element
     when the queue is full.
@@ -37,7 +37,7 @@ def discard_policy(queue):
     """
     return 1
 
-def discard_random_policy(queue):
+def discard_random(queue):
     """
     Policy for discarding random elements from
     a queue once full.  This is useful when a queue

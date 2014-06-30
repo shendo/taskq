@@ -170,19 +170,19 @@ def test_discard():
     assert q.pop(2) == ['test1', 'test3']
     
 def test_policies():
-    q = Queue(maxsize=1, full_policy=policy.discard_policy)
+    q = Queue(maxsize=1, full_policy=policy.discard)
     q.push('test1')
     q.push('test2')
     assert len(q) == 1
     assert q.pop() == 'test1'
     
-    q = Queue(maxsize=1, full_policy=policy.discard_random_policy)
+    q = Queue(maxsize=1, full_policy=policy.discard_random)
     q.push('test1')
     q.push('test2')
     assert len(q) == 1
     assert q.pop() == 'test2'
     
-    q = Queue(maxsize=3, full_policy=policy.discard_random_policy)
+    q = Queue(maxsize=3, full_policy=policy.discard_random)
     q.push('test1', 1, 'foo')
     q.push('test2', 2, 'bar')
     q.push('test3', 1, 'foo')
@@ -190,7 +190,7 @@ def test_policies():
     assert len(q) == 3
     assert 'test4' in [ q.pop() for _ in range(3) ]
     
-    q = Queue(maxsize=1, full_policy=policy.exception_policy)
+    q = Queue(maxsize=1, full_policy=policy.exception)
     q.push('test1')
     try:
         q.push('test2')
