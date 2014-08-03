@@ -93,7 +93,7 @@ requests can be made using GitHub's `issues system`_.
 .. _issues system: https://github.com/shendo/taskq/issues
 
 .. |build_status| image:: https://secure.travis-ci.org/shendo/taskq.png?branch=master
-   :target: http://travis-ci.org/#!/shendo/taskq
+   :target: https://travis-ci.org/shendo/taskq
    :alt: Current build status
 
 .. |pypi_version| image:: https://pypip.in/v/taskq/badge.png
