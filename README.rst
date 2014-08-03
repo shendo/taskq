@@ -3,6 +3,8 @@ taskq
 
 Priority queue with task categorisation support
 
+|build_status| |pypi_version|
+
 Overview
 --------
 ``taskq`` is a heap based priority queue that adds support to
@@ -14,8 +16,6 @@ non-uniform processing times (for calculating efficient prefetch).
 
 This library is not thread-safe and is not intended as a replacement
 for python's *queue.Queue* class.
-
-|build_status| |pypi_version|
 
 Getting Started
 ---------------
