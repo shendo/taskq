@@ -15,6 +15,8 @@ non-uniform processing times (for calculating efficient prefetch).
 This library is not thread-safe and is not intended as a replacement
 for python's *queue.Queue* class.
 
+|build_status| |pypi_version|
+
 Getting Started
 ---------------
 Install using ``pip``: ::
@@ -89,3 +91,11 @@ requests can be made using GitHub's `issues system`_.
 
 .. _GitHub: https://github.com/shendo/taskq
 .. _issues system: https://github.com/shendo/taskq/issues
+
+.. |build_status| image:: https://secure.travis-ci.org/shendo/taskq.png?branch=master
+   :target: http://travis-ci.org/#!/shendo/taskq
+   :alt: Current build status
+
+.. |pypi_version| image:: https://pypip.in/v/taskq/badge.png
+   :target: https://pypi.python.org/pypi/taskq
+   :alt: Latest PyPI version
