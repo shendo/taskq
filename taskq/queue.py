@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from __future__ import unicode_literals
 import heapq
 import itertools
 
@@ -96,7 +97,7 @@ class Queue(object):
         elements are encountered during pop() operations.
         """
         # drop all discarded and re-heapify
-        for cat, q in self.heaps.iteritems():
+        for cat, q in self.heaps.items():
             newq = [ x for x in q if x[-1] is not DISCARDED ]
             heapq.heapify(newq)
             self.heaps[cat] = newq
@@ -128,7 +129,7 @@ class Queue(object):
             raise ValueError('Must specify a count threshold when using ratios')
         items = []
         threshold = count or 1
-        heaps = [ y for x, y in self.heaps.iteritems()
+        heaps = [ y for x, y in self.heaps.items()
                      if not categories or x in categories ]
         value = 0
         while value < threshold:
