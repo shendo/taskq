@@ -64,9 +64,8 @@ class Queue(object):
             the priority value as long as type is consistent for queue.
         @param category: Optional group categorisation for item.
         """
-        if self.full():
-            if self.full_policy(self):
-                return
+        if self.full() and self.full_policy(self):
+            return
         if item in self.lookup:
             raise ValueError('Duplicate item values are not allowed')
         
