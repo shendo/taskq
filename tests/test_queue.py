@@ -208,4 +208,56 @@ def test_policies():
         assert False # should have raised
     except policy.QueueFullException:
         pass
-    
+
+def test_full():
+    # default no limit
+    q = Queue()
+    assert not q.full()
+    q.push('test1')
+    q.push('test2')
+    assert not q.full()
+
+    # 0 = no limit
+    q = Queue(maxsize=0)
+    assert not q.full()
+    q.push('test1')
+    q.push('test2')
+    assert not q.full()
+
+    # -ve = no limit
+    q = Queue(maxsize=-1)
+    assert not q.full()
+    q.push('test1')
+    q.push('test2')
+    assert not q.full()
+
+    # check with pop
+    q = Queue(maxsize=2)
+    assert not q.full()
+    q.push('test1')
+    q.push('test2')
+    assert q.full()
+    q.pop()
+    assert not q.full()
+    q.push('test3')
+    assert q.full()
+
+    # check with discard
+    q = Queue(maxsize=1)
+    assert not q.full()
+    q.push('test1')
+    assert q.full()
+    q.discard('test1')
+    assert not q.full()
+    q.push('test2')
+    assert q.full()
+
+    # check when discarded by policy
+    q = Queue(maxsize=1, full_policy=policy.discard)
+    assert not q.full()
+    q.push('test1')
+    assert q.full()
+    q.push('test2')
+    assert q.full()
+    q.pop()
+    assert not q.full()

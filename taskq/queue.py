@@ -24,7 +24,7 @@ from .policy import discard
 # details taken from priority queue example at
 # https://docs.python.org/2/library/heapq.html
 DISCARDED = 'DEL'
-        
+
 class Queue(object):
     """
     Priority queue with task categorisation support.
@@ -45,7 +45,15 @@ class Queue(object):
         self.lookup = {}
         # tie breaker for ordering
         self.counter = itertools.count()
-        
+    
+    def full(self):
+        """
+        Tests whether the queue is full or can accept
+        more items.
+        @return: True if the queue is full, otherwise False
+        """
+        return self.maxsize > 0 and self.size >= self.maxsize
+    
     def push(self, item, priority=1, category='default'):
         """
         Push the specified item/task onto the queue.
@@ -56,7 +64,7 @@ class Queue(object):
             the priority value as long as type is consistent for queue.
         @param category: Optional group categorisation for item.
         """
-        if self.maxsize > 0 and self.size >= self.maxsize:
+        if self.full():
             if self.full_policy(self):
                 return
         if item in self.lookup:
