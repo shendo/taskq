@@ -64,7 +64,7 @@ Task categories: ::
 	>>> q.push('task2', category='bar')
 	>>> q.push('task3', category='foo')
 	>>> q.pop(2, categories=['dog', 'foo'])
-	['task1', 'task2']
+	['task1', 'task3']
 
 Category ratios: ::
 
